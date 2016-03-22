@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- http://logback.qos.ch/manual/configuration.html -->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--<pattern>%d{HH:mm:ss,SSS} [%thread] %-5level %logger - %msg%n%ex{full}</pattern>-->
+            <pattern>%d{yyyy-MM-dd'T'HH:mm:ss.SSS} [%thread] - %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.github.jmnunezizu.sparktemplate" level="debug"/>
+
+    <root level="info">
+        <appender-ref ref="consoleAppender"/>
+    </root>
+
+</configuration>

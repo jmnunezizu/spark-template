@@ -16,7 +16,6 @@ resolvers ++= Seq(
 )
 
 // Dependencies
-
 val testDependencies = Seq(
   "org.specs2" %% "specs2-core" % "3.6.4" % "test"
 )
@@ -26,7 +25,11 @@ val sparkVersion = "1.6.1"
 val rootDependencies = Seq(
   "com.iheart" %% "ficus" % "1.2.0",
 
-  "org.apache.spark" %% "spark-core" % sparkVersion,
+  "ch.qos.logback" % "logback-classic" % "1.1.6",
+  "org.slf4j" % "log4j-over-slf4j" % "1.7.19",
+
+
+  "org.apache.spark" %% "spark-core" % sparkVersion exclude("log4j", "log4j") exclude("org.slf4j", "slf4j-log4j12"),
   "org.apache.spark" %% "spark-sql" % sparkVersion,
   "org.apache.spark" %% "spark-hive" % sparkVersion
 )
