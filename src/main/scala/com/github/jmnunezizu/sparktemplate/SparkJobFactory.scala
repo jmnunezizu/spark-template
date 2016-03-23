@@ -15,15 +15,8 @@ abstract class BaseSparkJobFactory[T <: SparkJobConfig : ValueReader] extends Sp
   lazy val mainConfig: Config = ConfigFactory.load()
   lazy val sparkJobConfig: T = mainConfig.as[T](getConfigPath())
 
+  val sparkEnvironment = new SparkJobEnvironment(sparkJobConfig.sparkConfig)
+  val sc = sparkEnvironment.sc
+
   def getConfigPath(): String
-}
-
-abstract class SqlSparkJobFactory[T <: SparkJobConfig: ValueReader] extends BaseSparkJobFactory[T] {
-  val sparkEnvironment = new SparkJobEnvironment(sparkJobConfig.sparkConfig) with SqlSparkContext
-  val sqlContext = sparkEnvironment.sqlContext
-}
-
-abstract class HiveSparkJobFactory[T <: SparkJobConfig: ValueReader] extends BaseSparkJobFactory[T] {
-  val sparkEnvironment = new SparkJobEnvironment(sparkJobConfig.sparkConfig) with HiveSparkContext
-  val hiveContext = sparkEnvironment.hiveContext
 }

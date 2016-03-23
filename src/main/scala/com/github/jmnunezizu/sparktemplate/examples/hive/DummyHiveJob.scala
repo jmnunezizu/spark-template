@@ -1,8 +1,8 @@
 package com.github.jmnunezizu.sparktemplate.examples.hive
 
-import com.github.jmnunezizu.sparktemplate.HiveSparkJobFactory
+import com.github.jmnunezizu.sparktemplate.{SqlSparkContext, HiveSparkContext, BaseSparkJobFactory}
 
-object DummyHiveJob extends HiveSparkJobFactory[DummyHiveJobConfig] {
+object DummyHiveJob extends BaseSparkJobFactory[DummyHiveJobConfig] with SqlSparkContext with HiveSparkContext {
 
   def main(args: Array[String]): Unit = {
     import hiveContext.sql

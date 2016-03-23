@@ -6,7 +6,7 @@ import org.apache.spark.{SparkContext, SparkConf}
 import org.apache.spark.sql.SQLContext
 
 trait SparkContextHolder {
-  def sc: SparkContext
+  implicit val sc: SparkContext
 }
 
 trait SqlSparkContext extends SparkContextHolder {
